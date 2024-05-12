@@ -1,0 +1,40 @@
+server:
+  port: 8080
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: /Users/ivanberezuckij/work/pet-projects/logistic-center/backend/user-service/certificate.p12
+    key-store-password: 1PwCgNAb
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://auth.dppmai.ru/realms/lessons
+          jwk-uri: https://auth.dppmai.ru/realms/lessons/protocol/openid-connect/certs
+  liquibase:
+    user: UserService
+    password: UserService
+    change-log: 'classpath:db/changelog/changelog.xml'
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/UserServiceDB"
+    username: UserService
+    password: UserService
+
+keycloak:
+  serverUrl: https://auth.dppmai.ru
+  realm: lessons
+  clientId: admin-cli
+  username: admin
+  password: HVG-Rqf-5PV-Lp6
+  realmName: lessons
+
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %highlight(%-5level) %logger{36} %M - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} %M - %msg%n"
+  file:
+    name: log.txt
+  level.root: info

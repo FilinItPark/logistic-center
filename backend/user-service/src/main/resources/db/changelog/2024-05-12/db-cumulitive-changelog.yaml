@@ -4,4 +4,4 @@ databaseChangeLog:
       author: ivanberezuckij
       changes:
         - sqlFile:
-            path: db/changelog/2024/03/31/2024-03-31-12:11_create_category_table.sql
+            path: db/changelog/2024/03/31/init-schema.sql

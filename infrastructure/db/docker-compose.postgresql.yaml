@@ -2,26 +2,19 @@ version: '3.8'
 
 services:
   logistic-center-postgres-db:
-    image: postgres:latest
-    restart: always
-    environment:
-      POSTGRES_USER: main_user
-      POSTGRES_PASSWORD: main_password
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./postgres-help-files/init.sql:/docker-entrypoint-initdb.d/init.sql
+    image: postgres:14.2
+    restart: unless-stopped
     ports:
       - '5432:5432'
-    entrypoint:
-      - 'docker-entrypoint.sh'
-      - 'postgres'
-    command:
-      - '-c'
-      - 'shared_preload_libraries=pg_stat_statements'
-    healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U main_user']
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    environment:
+      POSTGRES_DB: 'marketplacedb'
+      POSTGRES_USER: 'bibamet'
+      POSTGRES_PASSWORD: 'test'
+      PGDATA: '/var/lib/postgresql/data/pgdata'
+    volumes:
+      - ./dbdata:/var/lib/postgresql/data
+      - ./dbroot:/root
+      - ./dbroot/init.sql:/docker-entrypoint-initdb.d/db.sql
+
 volumes:
   postgres_data:

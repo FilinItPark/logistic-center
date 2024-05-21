@@ -18,9 +18,9 @@ spring:
     password: UserService
     change-log: 'classpath:db/changelog/changelog.xml'
   datasource:
-    url: "jdbc:postgresql://localhost:5432/UserServiceDB"
-    username: UserService
-    password: UserService
+    url: "jdbc:postgresql://localhost:7432/userservicedb"
+    username: userservice
+    password: 12345
 
 keycloak:
   serverUrl: https://auth.dppmai.ru

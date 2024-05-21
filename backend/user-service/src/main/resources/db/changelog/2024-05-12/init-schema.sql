@@ -1,11 +1,40 @@
 CREATE TABLE Users
 (
-    id         UUID PRIMARY KEY,
-    first_name VARCHAR(100),
-    last_name  VARCHAR(100),
+    id         bigint PRIMARY KEY,
+    full_name  VARCHAR(200),
     email      VARCHAR(255) UNIQUE,
-    company_id UUID,
+    login      VARCHAR(255) UNIQUE,
     languages  jsonb,
     created_at TIMESTAMP,
     deleted_at TIMESTAMP
 );
+
+create table Drivers
+(
+    id               bigint primary key,
+    driver_licenses  bigint references DriversLicenses (id),
+    sum_way          float,
+    experience_month int,
+    rating           float,
+    owner_id         bigint references Users (id)
+);
+
+create table Managers
+(
+    id       bigint primary key,
+    owner_id bigint references Users (id),
+    rating   float,
+    tariff   jsonb
+);
+
+create table ManagersCompanies
+(
+    manager_id bigint references Managers (id),
+    company_id bigint
+);
+
+create table DriversLicenses
+(
+    id   bigint primary key,
+    name varchar(100)
+)

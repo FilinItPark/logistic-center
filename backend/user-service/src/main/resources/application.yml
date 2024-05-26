@@ -14,9 +14,9 @@ spring:
           issuer-uri: https://auth.dppmai.ru/realms/lessons
           jwk-uri: https://auth.dppmai.ru/realms/lessons/protocol/openid-connect/certs
   liquibase:
-    user: UserService
-    password: UserService
-    change-log: 'classpath:db/changelog/changelog.xml'
+    user: userservice
+    password: 12345
+    change-log: 'classpath:db/changelog/db-init.yaml'
   datasource:
     url: "jdbc:postgresql://localhost:7432/userservicedb"
     username: userservice

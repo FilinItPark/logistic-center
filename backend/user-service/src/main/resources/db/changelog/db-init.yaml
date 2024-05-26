@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/2024/03/31/db-cumulitive-changelog.yaml
+      file: db/changelog/2024-05-12/db-cumulitive-changelog.yaml
+  - include:
+      file: db/changelog/2024-05-26/db-cumulitive-changelog.yaml

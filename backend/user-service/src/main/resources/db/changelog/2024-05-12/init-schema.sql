@@ -9,6 +9,12 @@ CREATE TABLE Users
     deleted_at TIMESTAMP
 );
 
+create table DriversLicenses
+(
+    id   bigint primary key,
+    name varchar(100)
+);
+
 create table Drivers
 (
     id               bigint primary key,
@@ -32,9 +38,3 @@ create table ManagersCompanies
     manager_id bigint references Managers (id),
     company_id bigint
 );
-
-create table DriversLicenses
-(
-    id   bigint primary key,
-    name varchar(100)
-)

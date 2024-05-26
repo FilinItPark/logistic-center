@@ -3,6 +3,7 @@ package ru.itpark.userservice.infrastructure.config.oauth;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -49,6 +50,12 @@ public class KeycloakConfiguration {
         http.addFilterBefore(corsFilter(), SessionManagementFilter.class).csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(authz -> {
 
         });
+
+        http
+                .authorizeHttpRequests(
+                        authorize -> authorize
+                                .anyRequest().permitAll()
+                );
 
         http.oauth2ResourceServer(
                 (oauth2) ->

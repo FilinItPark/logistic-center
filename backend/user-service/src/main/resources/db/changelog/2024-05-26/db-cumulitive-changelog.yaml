@@ -4,4 +4,4 @@ databaseChangeLog:
       author: ivanberezuckij
       changes:
         - sqlFile:
-            path: db/changelog/2024-05-12/init-schema.sql
+            path: db/changelog/2024-05-26/add-id-column-to-managerscompanies.sql

@@ -4,13 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import ru.itpark.userservice.domain.user.VO.DateInfo;
 import ru.itpark.userservice.domain.user.VO.Language;
 import ru.itpark.userservice.domain.user.converters.LanguageConverter;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,9 +17,9 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 @ToString
 public class User implements UserDetails {
-
     @Id
     private Long id;
 

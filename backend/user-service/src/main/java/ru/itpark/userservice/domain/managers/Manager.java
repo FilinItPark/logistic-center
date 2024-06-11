@@ -11,6 +11,7 @@ import ru.itpark.userservice.domain.user.User;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Builder
 @Setter
 @ToString
 public class Manager {
@@ -21,6 +22,7 @@ public class Manager {
     private User owner;
     private Float rating;
 
+    @Column(name = "tariff", columnDefinition = "jsonb")
     @Convert(converter = TariffConverter.class)
     private Tariff tariff;
 }

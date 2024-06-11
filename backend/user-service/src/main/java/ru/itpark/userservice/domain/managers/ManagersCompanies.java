@@ -11,6 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Builder
 @Setter
 @ToString
 public class ManagersCompanies {

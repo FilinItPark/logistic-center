@@ -21,6 +21,8 @@ spring:
     url: "jdbc:postgresql://localhost:7432/userservicedb"
     username: userservice
     password: 12345
+#    hikari:
+#      transaction-isolation:
 
 keycloak:
   serverUrl: https://auth.dppmai.ru

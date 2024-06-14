@@ -2,6 +2,7 @@ package ru.itpark.userservice.domain.user;
 
 import ru.itpark.userservice.domain.user.VO.DateInfo;
 import ru.itpark.userservice.domain.user.VO.Language;
+import ru.itpark.userservice.domain.user.VO.Role;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -26,6 +27,7 @@ public class UserFactory {
                                 .createdAt(LocalDateTime.now())
                                 .build()
                 )
+                .role(Role.DRIVER)
                 .build();
     }
 

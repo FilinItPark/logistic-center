@@ -16,6 +16,7 @@ import ru.itpark.userservice.domain.user.User;
 @ToString
 public class Manager {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne

@@ -2,6 +2,7 @@ package ru.itpark.userservice.domain.driver;
 
 import jakarta.persistence.*;
 import lombok.*;
+import ru.itpark.userservice.domain.DriverLicense.DriverLicense;
 import ru.itpark.userservice.domain.user.User;
 
 @Entity
@@ -14,6 +15,7 @@ import ru.itpark.userservice.domain.user.User;
 public class Driver {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "sum_way")
@@ -25,6 +27,22 @@ public class Driver {
     private Float rating;
 
     @OneToOne(fetch = FetchType.LAZY)
+    private DriverLicense driverLicense;
+
+    @OneToOne(fetch = FetchType.LAZY)
     private User owner;
+
+    public void update(
+            Float sumWay,
+            Integer experienceMonth,
+            Float rating,
+            DriverLicense driverLicense
+    ) {
+        this.sumWay = sumWay;
+        this.experienceMonth = experienceMonth;
+        this.rating = rating;
+        this.driverLicense = driverLicense;
+    }
+
 
 }

@@ -22,6 +22,7 @@ public class UserController {
 
     @PostMapping("/create")
     public void create(@RequestBody FillUserDataCommand fillUserDataCommand) {
+
         userFacade.create(fillUserDataCommand);
     }
 

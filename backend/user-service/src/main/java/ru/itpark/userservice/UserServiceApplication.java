@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.handler.annotation.Payload;
+import ru.itpark.proto.ExampleRequest;
 
 @SpringBootApplication
 public class UserServiceApplication {
@@ -17,16 +18,18 @@ public class UserServiceApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(KafkaTemplate template) {
+    CommandLineRunner commandLineRunner(KafkaTemplate<String, ExampleRequest> template) {
         return args -> {
-            template.send("test",  "hello world");
+            template.send("test", ExampleRequest.newBuilder()
+                    .setName("hello")
+                    .build());
             System.out.println("Hello World!");
         };
     }
 
     @KafkaListener(topics = {"test"}, groupId = "myGroup", containerFactory = "kafkaListenerContainerFactory")
-    public void listen(@Payload ConsumerRecord<String, String> message) {
-        System.out.println("Received: " + message.value());
+    public void listen(@Payload ConsumerRecord<String, ExampleRequest> message) {
+        System.out.println("Received: " + message.value().getName());
     }
 
 }

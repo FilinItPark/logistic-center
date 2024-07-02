@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ru.itpark.proto";
+option java_outer_classname = "HelloWordProto";
+
+message ExampleRequest {
+  string name = 1;
+}
+
+message ExampleResponse {
+  string message = 1;
+}
+

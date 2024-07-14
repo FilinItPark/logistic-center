@@ -10,10 +10,15 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.handler.annotation.Payload;
 import ru.itpark.proto.ExampleRequest;
 
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 @SpringBootApplication
 public class UserServiceApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(UserServiceApplication.class, args);
     }
 

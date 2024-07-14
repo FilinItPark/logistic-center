@@ -1,5 +1,6 @@
 package ru.itpark.userservice.application.user.command;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,26 @@ public class UserCommandService {
                 user.getRole().toString(),
                 user.getDateInfo().getCreatedAt(),
                 user.getDateInfo().getDeletedAt()
+        );
+    }
+
+    public void update(Long userId, FillUserDataCommand updateUserDataCommand) {
+        var userFromDb = userRepository.findById(userId).orElseThrow(() -> {
+            log.error("User with id {} not found", userId);
+            throw new EntityNotFoundException("User with id " + userId + " not found");
+        });
+
+        userFromDb.setFullName(updateUserDataCommand.fullName());
+        userFromDb.setEmail(updateUserDataCommand.email());
+        userFromDb.setLogin(updateUserDataCommand.login());
+        userFromDb.setLanguages(updateUserDataCommand.languages());
+
+        userRepository.updateUser(
+                userId,
+                userFromDb.getFullName(),
+                userFromDb.getEmail(),
+                userFromDb.getLogin(),
+                languageConverter.convertToDatabaseColumn(userFromDb.getLanguages())
         );
     }
 }

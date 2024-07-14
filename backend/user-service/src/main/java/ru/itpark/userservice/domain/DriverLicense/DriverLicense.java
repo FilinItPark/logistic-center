@@ -3,6 +3,8 @@ package ru.itpark.userservice.domain.DriverLicense;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "DriversLicenses")
 @AllArgsConstructor
@@ -12,8 +14,7 @@ import lombok.*;
 @ToString
 public class DriverLicense {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private UUID id;
 
     private String name;
 }

@@ -25,4 +25,16 @@ public interface UserRepository extends JpaRepository<User, Long> {
                   @Param("createdAt") LocalDateTime createdAt,
                   @Param("deletedAt") LocalDateTime deletedAt);
 
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE users SET full_name = :fullName, email = :email, login = :login, languages = cast(:languages as jsonb), role = :role, deleted_at = :deletedAt " +
+            "WHERE id = :id", nativeQuery = true)
+    void updateUser(@Param("id") Long id,
+                    @Param("fullName") String fullName,
+                    @Param("email") String email,
+                    @Param("login") String login,
+                    @Param("languages") String languages
+    );
+
+
 }

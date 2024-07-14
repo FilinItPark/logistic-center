@@ -16,7 +16,7 @@ public class SearchUserFacade {
     private final UserMapper mapper;
 
 
-    public List<UserResponse> search(SearchParams params) {
-        return mapper.toUserResponseList(query.search(params));
+    public List<User> search(SearchParams params) {
+        return query.search(params);
     }
 }

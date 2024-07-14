@@ -17,4 +17,11 @@ public class UserFacade {
 
         userInfoService.create(fillDataCommand);
     }
+
+    public void update(Long userId, FillUserDataCommand updateUserDataCommand) {
+        log.debug("UserFacade.updateUserInfo() | updateUserDataCommand = {}", updateUserDataCommand);
+
+        userInfoService.update(userId,
+                updateUserDataCommand);
+    }
 }

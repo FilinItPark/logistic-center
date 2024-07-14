@@ -6,6 +6,10 @@ server:
     key-store: /Users/ivanberezuckij/work/pet-projects/logistic-center/backend/user-service/certificate.p12
     key-store-password: 1PwCgNAb
 
+grpc:
+  server:
+    port: 9090
+
 spring:
   kafka:
     bootstrap-servers: localhost:9092

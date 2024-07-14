@@ -23,7 +23,7 @@ public class DriverLicenseController {
     }
 
     @GetMapping
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<GetDriverLicenceQueryResponse> get() {
         return facade.get();
     }

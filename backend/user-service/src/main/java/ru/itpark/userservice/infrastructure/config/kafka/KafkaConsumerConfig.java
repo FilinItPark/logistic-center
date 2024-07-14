@@ -1,3 +1,4 @@
+/*
 package ru.itpark.userservice.infrastructure.config.kafka;
 
 import org.springframework.context.annotation.Bean;
@@ -8,10 +9,12 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import ru.itpark.proto.ExampleRequest;
 import ru.itpark.userservice.infrastructure.config.kafka.base.DefaultKafkaConfig;
 
+*/
 /**
  * @author 1ommy
  * @version 01.04.2023
- */
+ *//*
+
 @Configuration
 public class KafkaConsumerConfig  extends DefaultKafkaConfig {
     @Bean
@@ -29,3 +32,4 @@ public class KafkaConsumerConfig  extends DefaultKafkaConfig {
     }
 }
 
+*/

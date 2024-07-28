@@ -1,7 +1,10 @@
 package ru.itpark.userservice.presentation.web.user;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import ru.itpark.userservice.application.user.facade.UserFacade;
 import ru.itpark.userservice.application.user.mapper.UserMapper;
@@ -14,6 +17,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RequestMapping("/api/user")
+@Slf4j
 @RestController
 public class UserController {
     private final UserFacade userFacade;
@@ -23,7 +27,7 @@ public class UserController {
     @PostMapping("/create")
     @PreAuthorize("isAuthenticated()")
     public void create(@RequestBody FillUserDataCommand fillUserDataCommand) {
-
+        log.info("пук");
         userFacade.create(fillUserDataCommand);
     }
 
@@ -34,7 +38,8 @@ public class UserController {
 
     @PreAuthorize("isAuthenticated()")
     @PutMapping("/update/{id}")
-    public void update(@PathVariable("id") Long userId, @RequestBody FillUserDataCommand updateUserDataCommand) {
+    public void update(@PathVariable("id") Long userId, @RequestBody FillUserDataCommand updateUserDataCommand, AuthenticationPrincipal principal)
+    {
         userFacade.update(userId, updateUserDataCommand);
     }
 }

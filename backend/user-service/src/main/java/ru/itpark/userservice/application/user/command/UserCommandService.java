@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
+import ru.itpark.userservice.domain.user.User;
 import ru.itpark.userservice.domain.user.UserFactory;
 import ru.itpark.userservice.domain.user.converters.LanguageConverter;
 import ru.itpark.userservice.infrastructure.repositories.user.UserRepository;
@@ -35,6 +36,8 @@ public class UserCommandService {
                 user.getDateInfo().getCreatedAt(),
                 user.getDateInfo().getDeletedAt()
         );
+
+
     }
 
     public void update(Long userId, FillUserDataCommand updateUserDataCommand) {
@@ -48,12 +51,12 @@ public class UserCommandService {
         userFromDb.setLogin(updateUserDataCommand.login());
         userFromDb.setLanguages(updateUserDataCommand.languages());
 
-        userRepository.updateUser(
+      /*  userRepository.updateUser(
                 userId,
                 userFromDb.getFullName(),
                 userFromDb.getEmail(),
                 userFromDb.getLogin(),
                 languageConverter.convertToDatabaseColumn(userFromDb.getLanguages())
-        );
+        );*/
     }
 }

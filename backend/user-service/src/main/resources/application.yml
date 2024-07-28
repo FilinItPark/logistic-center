@@ -12,21 +12,19 @@ grpc:
 
 spring:
   kafka:
-    bootstrap-servers: localhost:9092
-    consumer:
-      group-id: my-group
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: io.confluent.kafka.serializers.protobuf.KafkaProtobufDeserializer
+    bootstrap-servers: localhost:29092
+    group-id: userservice
+  consumer:
     properties:
-      schema.registry.url: "http://localhost:8081"
+      spring.json.trusted.packages: "ru.itpark.userservice.domain.user"
 
 
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://auth.dppmai.ru/realms/lessons
-          jwk-uri: https://auth.dppmai.ru/realms/lessons/protocol/openid-connect/certs
+          issuer-uri: https://auth.dppmai.ru/realms/dpp-platform
+          jwk-uri: https://auth.dppmai.ru/realms/dpp-platform/protocol/openid-connect/certs
   liquibase:
     user: userservice
     password: 12345
@@ -40,11 +38,11 @@ spring:
 
 keycloak:
   serverUrl: https://auth.dppmai.ru
-  realm: lessons
+  realm: dpp-platform
   clientId: admin-cli
   username: admin
   password: HVG-Rqf-5PV-Lp6
-  realmName: lessons
+  realmName: dpp-platform
 
 springdoc:
   api-docs:

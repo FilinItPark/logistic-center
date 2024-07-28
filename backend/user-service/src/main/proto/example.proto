@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+
+import "google/api/annotations.proto";
+
+option java_multiple_files = true;
+option java_package = "proto";
+option java_outer_classname = "ExampleServiceProto";
+
+message ExampleRequest {
+  string name = 1 ;
+  int32 age = 2;
+}
+
+message ExampleResponse {
+  string message = 1;
+}
+
+
+service ExampleService {
+  rpc SayHello(ExampleRequest) returns (ExampleResponse) {
+    // this is url, for RESTfull/JSON api and method
+    // this line means when a HTTP post request comes with "/v1/sayHello" call this rpc method over this service
+    option (google.api.http) = {
+      post: "/v1/sayhello",
+      body: "*"
+    };
+  }
+}

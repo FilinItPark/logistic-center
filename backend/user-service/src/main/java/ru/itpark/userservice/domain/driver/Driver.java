@@ -10,6 +10,7 @@ import ru.itpark.userservice.domain.user.User;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Builder
 @Setter
 @ToString
 public class Driver {
